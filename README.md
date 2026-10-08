@@ -2,7 +2,7 @@
 
 An end-to-end Big Data analytics project that simulates Trade Finance transactions and processes them through batch analytics, real-time streaming, machine learning, and business visualization.
 
-The project demonstrates how Hadoop, Spark, Kafka, Hive, HBase, Python, and Power BI can work together to support transaction monitoring, risk analysis, operational reporting, and data-driven decision making.
+The project demonstrates how Hadoop, Spark, Kafka, Hive, HBase, Python, machine learning, and Tableau can work together to support transaction monitoring, risk analysis, operational reporting, and data-driven decision making.
 
 ---
 
@@ -10,9 +10,9 @@ The project demonstrates how Hadoop, Spark, Kafka, Hive, HBase, Python, and Powe
 
 Trade Finance involves large volumes of transaction, document, shipment, payment, and compliance data.
 
-This project simulates a Trade Finance environment and builds a data pipeline that can process and analyze information from different stages of the transaction lifecycle.
+This project simulates a Trade Finance environment and builds a data pipeline that processes and analyzes information across different stages of the transaction lifecycle.
 
-The platform supports:
+The platform includes:
 
 - Batch data processing
 - Real-time event streaming
@@ -33,7 +33,7 @@ The platform supports:
 | Data Warehouse | Apache Hive |
 | NoSQL Database | Apache HBase |
 | Machine Learning | scikit-learn, statsmodels |
-| Business Intelligence | Power BI |
+| Business Intelligence | Tableau |
 | Environment | Docker |
 
 ---
@@ -68,7 +68,7 @@ Machine Learning
 Analytics Results
       |
       v
-Power BI Dashboard
+Tableau Dashboard
 ```
 
 The architecture combines historical analytics, real-time processing, machine learning, and business intelligence within the same Trade Finance environment.
@@ -90,7 +90,7 @@ The project generates synthetic Trade Finance lifecycle events including:
 - Credit and limit checks
 - Foreign exchange reference rates
 
-Synthetic data is used so the project can demonstrate realistic financial workflows without using real customer information.
+Synthetic data is used so the project can demonstrate realistic analytical workflows without using real customer information.
 
 ---
 
@@ -120,11 +120,11 @@ bash scripts/trade-finance/hbase-operations.sh
 
 Apache Kafka is used to simulate real-time Trade Finance events.
 
-The event producer automatically creates the required Trade Finance Kafka topics and publishes transaction lifecycle events.
+The event producer creates Trade Finance Kafka topics and publishes transaction lifecycle events.
 
 Streaming data can then be processed for near real-time monitoring and analytics.
 
-This demonstrates how financial institutions could monitor changing transaction conditions instead of relying only on historical batch reports.
+This demonstrates how transaction activity can be monitored continuously instead of relying only on historical batch reports.
 
 ---
 
@@ -140,7 +140,7 @@ It is used for analytical tasks such as:
 - Risk-related reporting
 - Operational analysis
 
-Hive allows large distributed datasets to be analyzed using SQL-style queries.
+Hive makes distributed datasets easier to analyze using SQL-style queries.
 
 ---
 
@@ -169,7 +169,7 @@ The project includes several machine learning use cases.
 
 **Model:** Isolation Forest
 
-Used to identify transactions with unusual characteristics that may require further review.
+Used to identify transactions with unusual characteristics that may require additional review.
 
 ### Documentary Discrepancy Prediction
 
@@ -181,7 +181,7 @@ Used to estimate whether a Trade Finance transaction may contain documentary dis
 
 **Models:** Random Forest Classification and Regression
 
-Used to identify transactions that may experience processing delays and estimate delay-related outcomes.
+Used to identify transactions that may experience processing delays and estimate processing time.
 
 ### Trade Volume Forecasting
 
@@ -195,38 +195,39 @@ Machine learning results are stored in HBase and can also be published through K
 
 ## Business Visualization
 
-Power BI is used to transform analytical outputs into business-focused dashboards.
+The business visualization layer was rebuilt in Tableau for the portfolio version of this project.
 
-The visualization layer is designed to make Big Data and machine learning results easier for business users to understand.
+The Tableau dashboard transforms transaction, operational, and machine learning outputs into business-focused visualizations.
 
-The dashboards can visualize:
+### Executive Dashboard
 
-- Transaction volume
-- Trade value and exposure
-- High-risk transactions
-- Transaction anomalies
-- Documentary discrepancies
-- Processing delays
-- Trade activity by country or region
-- Product-level transaction activity
-- Monthly transaction trends
-- Forecasted trade volume
+The dashboard includes:
 
-### Example Business Questions
+- Total Transactions
+- High-Risk Transactions
+- Average Processing Days
+- Discrepancy Rate
+- Transactions by Product Type
+- Transactions by Beneficiary Country
+- Overall Risk Distribution
+- Transaction Trend Over Time
 
-The visualization layer can help answer questions such as:
+### Business Questions
 
-- How is Trade Finance transaction volume changing over time?
-- Which transactions may require additional risk review?
-- Which regions or products have the highest exposure?
-- Where are processing delays occurring?
-- Are documentary discrepancies increasing?
-- What transaction patterns appear unusual?
-- What is the expected future trade volume?
+The dashboard helps answer questions such as:
+
+- How many Trade Finance transactions are being processed?
+- How many transactions are classified as high risk?
+- What is the average processing time?
+- What proportion of transactions contain discrepancies?
+- Which Trade Finance products have the highest transaction volume?
+- Which beneficiary countries receive the most transactions?
+- How are transactions distributed across risk levels?
+- How does transaction volume change over time?
 
 ### Dashboard Preview
 
-Power BI dashboard screenshots will be added as the portfolio version of the project is updated.
+![Trade Finance Executive Overview](docs/images/Dashboard%20-%20Executive%20Overview.png)
 
 ---
 
@@ -234,15 +235,15 @@ Power BI dashboard screenshots will be added as the portfolio version of the pro
 
 ### Risk Monitoring
 
-Identify unusual or potentially high-risk transactions using analytical and machine learning techniques.
+Identify unusual and high-risk transactions using analytical and machine learning techniques.
 
 ### Operational Monitoring
 
-Track transaction activity, processing delays, and workflow performance.
+Track transaction activity, discrepancies, processing time, and workflow performance.
 
 ### Historical Analysis
 
-Use Hadoop, Hive, and HBase to analyze large volumes of transaction data.
+Use Hadoop, Hive, and HBase to analyze distributed historical transaction data.
 
 ### Real-Time Monitoring
 
@@ -250,7 +251,7 @@ Use Kafka and Spark-based processing to analyze continuously generated transacti
 
 ### Decision Support
 
-Use Power BI dashboards to turn technical analytical outputs into information that business users can interpret quickly.
+Use Tableau to convert technical analytical outputs into information that business users can interpret quickly.
 
 ---
 
@@ -263,6 +264,8 @@ Trade-Finance-Big-Data-Analytics/
 ├── data/
 ├── docker/
 ├── docs/
+│   └── images/
+│       └── Trade_Finance_Executive_Overview.png
 ├── mapreduce/
 ├── member1/
 ├── powerbi/
@@ -270,11 +273,17 @@ Trade-Finance-Big-Data-Analytics/
 ├── sql/
 ├── sqlserver/
 ├── structured_streaming/
+├── tableau/
+│   └── Trade_Finance_Analytics_Tableau.twbx
 ├── trade_finance/
 │
 ├── docker-compose.yml
 └── README.md
 ```
+
+The original Power BI materials from the academic team project remain in the `powerbi/` directory for project history and reference.
+
+The Tableau workbook in the `tableau/` directory represents the rebuilt portfolio visualization layer.
 
 ---
 
@@ -319,7 +328,7 @@ bash scripts/trade-finance/validate-trade-finance.sh
 
 This project was originally developed as a four-person academic Big Data project.
 
-The project covered several areas including:
+The original team project covered:
 
 - Business case and architecture
 - Hadoop, HDFS, and YARN
@@ -328,13 +337,13 @@ The project covered several areas including:
 - Machine learning
 - Power BI visualization
 
-The repository is now being reorganized as a portfolio project to better demonstrate the technical architecture, analytical workflow, and business use cases.
+The repository has since been reorganized as a portfolio project to better demonstrate the technical architecture, analytical workflow, machine learning use cases, and business visualization.
 
 ---
 
 ## My Contributions
 
-My main contribution focused on the historical and batch analytics portion of the project, including:
+My main contribution to the original academic project focused on historical and batch analytics, including:
 
 - Working with Hive for historical analytical queries
 - Working with HBase for distributed data storage
@@ -342,22 +351,48 @@ My main contribution focused on the historical and batch analytics portion of th
 - Developing Hive-to-HBase analytical workflows
 - Creating CAD-normalized exposure analysis
 - Testing HBase PUT, GET, and SCAN operations
-- Supporting documentation and integration
+- Supporting project documentation and integration
 
-This project also helped me better understand how different Big Data technologies work together within an end-to-end analytics platform.
+For the portfolio version, I also:
+
+- Reorganized the repository for portfolio presentation
+- Rebuilt the business visualization layer in Tableau
+- Designed an executive dashboard for transaction, risk, and operational monitoring
+- Created KPI views for total transactions, high-risk transactions, average processing time, and discrepancy rate
+- Created visualizations for product activity, beneficiary countries, risk distribution, and transaction trends
+
+---
+
+## Tableau Portfolio Dashboard
+
+The Tableau portfolio version uses:
+
+```text
+data/trade-finance/member4-output/powerbi_trade_finance_ml.csv
+```
+
+as the primary dashboard dataset.
+
+The packaged Tableau workbook is stored at:
+
+```text
+tableau/Trade_Finance_Analytics_Tableau.twbx
+```
 
 ---
 
 ## Future Improvements
 
+Potential future improvements include:
+
 - Add a visual system architecture diagram
-- Add Power BI dashboard screenshots
 - Add Kafka streaming screenshots
-- Add Hive and HBase output examples
-- Improve project documentation
+- Add Hive query output examples
+- Add HBase operation screenshots
+- Add additional Tableau risk analysis views
+- Integrate historical and forecast transaction trends
 - Simplify the project setup process
-- Add clearer explanations of machine learning results
-- Add more business-focused visualizations
+- Improve automated data refresh between the analytics pipeline and visualization layer
 
 ---
 
@@ -373,7 +408,7 @@ This project also helped me better understand how different Big Data technologie
 - Machine learning
 - Data analytics
 - Business intelligence
-- Power BI
+- Tableau
 - Data visualization
 - Distributed data processing
 ```
